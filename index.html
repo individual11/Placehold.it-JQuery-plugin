@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!-- jQuery --> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> 
+	<script src="placehold.it.min.js"></script>
+	<script type="text/javascript">
+	
+	$(function(){
+		//general use
+		$('.simple img').placeholdit();
+		
+		
+		
+		//change different properties
+		$('#colorChange').placeholdit({
+			backgroundColor: 'e8117f',
+			textColor: 'fff'
+		});
+		//change the text
+		$('#textChange').placeholdit({
+			text: "Placehold.it"
+		});
+		//change the dimensiions
+		$('#dimensionChange').placeholdit({
+			width:100,
+			height:150//height isn't required, and if left blank will use width as height
+		});
+		
+		//chain it with other JQuery stuff
+		$('#daisyChain').placeholdit({
+			text: "Click Me"
+		}).click(function(e){
+			alert('You clicked me!');
+		});
+		
+	
+	});
+	
+	</script>
+	
+	<style>
+	
+	body{
+		font-family: Helvetica, Arial, sans-serif;
+		margin:0;
+		padding:0;
+		width:700px;
+	}
+	
+	div, p{
+		margin: 5px;
+	}
+	
+	p, .header{
+		padding-left: 5px;
+	}
+	
+	.header{
+		background-image: url("img/stripe.png");
+		background-repeat:repeat;
+	}
+	
+	img{ 
+		border:none; 
+		padding-left: 5px;	
+	}
+	
+	a{
+		text-decoration:none;
+		color: #e8117f;
+	}
+	a:hover{
+		background-color:#e8117f;
+		color:white;
+	}
+	
+	
+	</style>
+	
+</head>
+<body>
+<div id="intro">
+<div class="header">
+	<h1>PLACEHOLD.IT JQuery Plugin</h1>
+</div>
+<p>I&apos;ve been a big fan of <a href="http://www.placehold.it" target="_blank">Placehold.it</a> since I first ran across it. It&apos;s a service that makes it super easy to dynamically generate placeholder images for wire framing or during development. I decided to wrap the service into a JQuery plugin that will make it easy to generate FPO images at runtime.</p>
+<p>You can have an element as simple as <strong>&lt;img /&gt;</strong> and call <strong>$(&apos;img&apos;).placeholdit();</strong> to generate an image for it. You can also set the dimension of the image being returned in the attributes of the image like <strong>&lt;img width=&quot;200&quot; height=&quot;300&quot; /&gt;</strong>.</p>
+<p>Also, by default if the image has a <em>src</em> attribute already set, then it&apos;s skipped. You can override this by changing <strong>overwriteSRC</strong> to <strong>true</strong> and it won&apos;t matter if the <em>src</em> attribute is set or not.</p>
+<p>Below are a few examples of it working, so view the source to see the actual code for it.</p>
+<p></p>
+</div>
+<div class="simple">
+	<div class="header"><h2>SIMPLE PLACEHOLDER</h2></div>
+	<img />
+</div>
+<div class="simple">
+	<div class="header"><h2>USING ATTRIBUTES TO CONTROL SIZE</h2></div>
+	<img width="100" height="300" />
+	<img width="150" height="300" />
+	<img width="200" height="300" />
+	<!-- 
+	
+		notice how the next 2 only have the width attribute set
+		if only width is there, it assumes height is the same
+		so it gets a square
+		
+	-->
+	<img width="50" /><img width="50" />
+</div>
+<div id="properties">
+	<div class="header">
+		<h2>CHANGE PROPERTIES</h2>
+	</div>
+	<img id="colorChange" />
+	<img id="textChange" />
+	<img id="dimensionChange" />
+</div>
+
+<div id="clickable">
+	<div class="header">
+		<h2>CHAIN OTHER JQUERY CALLS</h2>
+	</div>
+	<img id="daisyChain" />
+</div>
+
+
+
+</body>
+</html>
