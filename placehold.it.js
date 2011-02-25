@@ -28,8 +28,6 @@ TODO:
     	'overrideProperties':	false		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
     }
     
-    console.log(this);
-    
     //make sure at least one image is there
     if(this.is('img')){    	
     	if ( options ) { 
