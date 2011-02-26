@@ -1,4 +1,4 @@
-Copyright (C) 2011 by Individual11.com (David Vogeleer)
+Copyright (C) 2011 by David Vogeleer < individual11.com >
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

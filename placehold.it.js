@@ -3,14 +3,11 @@
 Author: David Vogeleer
 Site: http://www.individual11.com
 
-Version: 0.1
+Version: 0.2
 
 License: MIT, see README.txt
 
 **Placehold.it is a service/website created by Brent Spore (http://twitter.com/#!/iboughtamac) and Russell Heimlich (http://twitter.com/#!/kingkool68)**
-
-TODO:
--get width/height from css properties if available
 
 *//////////////////////
 
@@ -37,7 +34,7 @@ TODO:
     	return this.each(function(i, el){
     		if(settings.overwriteSRC || !$(el).attr('src')){
 	    		var src = 'http://placehold.it/';
-    			var width = (settings.overrideProperties)? Number(settings.width):Number($(el).attr('width')) || settings.width;
+    			var width = (settings.overrideProperties)? Number(settings.width):Number($(el).attr('width')) ||  settings.width;
     			var height = (settings.overrideProperties)? Number(settings.height) || width:Number($(el).attr('height')) || Number(settings.height) || width;
     			src += width + "x" + height;
     			src += "/" + settings.backgroundColor + "/" + settings.textColor;
