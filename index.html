@@ -31,7 +31,19 @@
 			text: "Click Me"
 		}).click(function(e){
 			alert('You clicked me!');
-		});		
+		});
+		
+		//use it if there is an error loading an actual image
+		var errorReplacement = {
+			overwriteSRC: true,
+			backgroundColor: 'ff0000',
+			textColor: 'ffffff',
+			text: '! no img found !'
+		}
+		
+		$('img').error(function(){
+			$(this).placeholdit(errorReplacement);
+		});	
 	
 	});
 	
@@ -129,8 +141,11 @@
 	</div>
 	<img id="daisyChain" />
 </div>
-
-
-
+<div id="bagImgReference">
+	<div class="header">
+		<h2>REPLACE BAD IMG REFERENCES</h2>
+	</div>
+	<img src="noSuchImage.png" width="300" height="150" />
+</div>
 </body>
 </html>
