@@ -43,7 +43,20 @@
 		
 		$('img').error(function(){
 			$(this).placeholdit(errorReplacement);
-		});	
+		});
+		
+		//USE KITTENS!!
+		//in color
+		$('#colorKitten').placeholdit({
+			type:'kitten'
+		});
+		//or black & white
+		$('#grayScaleKitten').placeholdit({
+			width: 450,
+			height: 200,
+			type:'kitten',
+			backgroundColor:'000'
+		});
 	
 	});
 	
@@ -70,7 +83,9 @@
 		background-image: url("img/stripe.png");
 		background-repeat:repeat;
 	}
-	
+	.header h1{
+		display:inline;
+	}
 	img{ 
 		border:none; 
 		padding-left: 5px;	
@@ -88,6 +103,13 @@
 	.thumbnail{
 		width:50px;
 	}
+	#version{
+		float:right;
+		color:#e8117f;
+		font-weight:bold;
+		margin-top:16px;
+		margin-right:5px;
+	}
 	
 	</style>
 	
@@ -96,12 +118,14 @@
 <div id="intro">
 <div class="header">
 	<h1>PLACEHOLD.IT JQuery Plugin</h1>
+	<span id="version">v 0.3</span>
 </div>
 <p>I&apos;ve been a big fan of <a href="http://www.placehold.it" target="_blank">Placehold.it</a> since I first ran across it. It&apos;s a service that makes it super easy to dynamically generate placeholder images for wire framing or during development. I decided to wrap the service into a JQuery plugin that will make it easy to generate FPO images at runtime.</p>
 <p>You can have an element as simple as <strong>&lt;img /&gt;</strong> and call <strong>$(&apos;img&apos;).placeholdit();</strong> to generate an image for it. You can also set the dimension of the image being returned in the attributes of the image like <strong>&lt;img width=&quot;200&quot; height=&quot;300&quot; /&gt;</strong>. And if <strong>width</strong> or <strong>height</strong> is set in CSS, it will respect that as well.</p>
 <p>Also, by default if the image has a <em>src</em> attribute already set, then it&apos;s skipped. You can override this by changing <strong>overwriteSRC</strong> to <strong>true</strong> and it won&apos;t matter if the <em>src</em> attribute is set or not.</p>
 <p>Below are a few examples of it working, so view the source to see the actual code for it.</p>
-<p></p>
+<p><strong>*Update</strong>: v 0.3 has a few simple code tweeks and one pretty cool new feature - <a href="#kittens">KITTENS!</a> A <a href="http://placekitten.com/" target="_blank">new service</a> popped up that was inspired by Placehold.it, but uses actual pictures of kittens for FPO imagery, so I decided to incorporate it.</p>
+</div>
 </div>
 <div class="simple">
 	<div class="header"><h2>SIMPLE PLACEHOLDER</h2></div>
@@ -141,6 +165,13 @@
 		<h2>REPLACE BAD IMG REFERENCES</h2>
 	</div>
 	<img src="noSuchImage.png" width="300" height="150" />
+</div>
+<div id="kittens">
+	<div class="header">
+		<h2>NOW WITH OPTIONAL KITTENS!</h2>
+	</div>
+	<img id="colorKitten" />
+	<img id="grayScaleKitten" />
 </div>
 </body>
 </html>
