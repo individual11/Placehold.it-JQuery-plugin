@@ -60,7 +60,7 @@ License: MIT, see README.txt
     				src += width + "x" + height;
     				src += "/" + settings.backgroundColor + "/" + settings.textColor;
     				src += settings.format;
-    				src += "?text=" + settings.text;//the service ignores it if it's left blank, so this will speed up the loop slightly
+    				src += "&text=" + settings.text;//the service ignores it if it's left blank, so this will speed up the loop slightly
     			}
     			$(el).attr('src', src);
     		}
