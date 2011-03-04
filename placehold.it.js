@@ -4,7 +4,7 @@ Author: David Vogeleer
 Site: http://www.individual11.com/placeholdit/
 Description: The easiest way to add FPO images to your mockups at runtime.
 
-Version: 0.3
+Version: 0.3.5
 
 License: MIT, see README.txt
 
@@ -20,6 +20,8 @@ License: MIT, see README.txt
 •Removed the conditional for adding text for Placehold.it calls, since the server ignores blank text anyway, so hopefully it will speed the loop up a little bit
 •Changed Site reference in this file so it points directly to where the example file lives
 •Added Description, just in case
+-V 0.3.5
+•Had an error with some css in the html page, but decided to switch to .width and .height to get the info about the image dynamically
 
 -V 0.2
 • Looks at img attributes (or css) to see if it should already have a specific width x height
@@ -46,11 +48,10 @@ License: MIT, see README.txt
     	if ( options ) { 
     		$.extend( settings, options );
        	}
-    	
     	return this.each(function(i, el){
     		if(settings.overwriteSRC || !$(el).attr('src')){
-    			var width = (settings.overrideProperties)? Number(settings.width):Number($(el).attr('width')) ||  settings.width;
-    			var height = (settings.overrideProperties)? Number(settings.height) || width:Number($(el).attr('height')) || Number(settings.height) || width;
+       			var width = (settings.overrideProperties)? Number(settings.width):$(el).width() ||  settings.width;
+    			var height = (settings.overrideProperties)? Number(settings.height) || width:$(el).height() || Number(settings.height) || width;
     			if(settings.type === 'kitten'){
     				var src = 'http://placekitten.com/';
     				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
