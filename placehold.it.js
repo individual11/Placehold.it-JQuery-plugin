@@ -4,7 +4,7 @@ Author: David Vogeleer
 Site: http://www.individual11.com/placeholdit/
 Description: The easiest way to add FPO images to your mockups at runtime.
 
-Version: 0.3.5
+Version: 0.4
 
 License: MIT, see README.txt
 
