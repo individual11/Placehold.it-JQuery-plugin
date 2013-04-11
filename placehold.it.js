@@ -14,6 +14,11 @@ License: MIT, see README.txt
 ** Placehold.it is a service/website created by Brent Spore (http://twitter.com/#!/iboughtamac) and Russell Heimlich (http://twitter.com/#!/kingkool68) **
 ** Placekitten.com is a service created by Mark James (http://mark.james.name/) **
 ** Lorempixel.com is a service created by Holler-Moritz (http://lorempixel.com//) **
+** http://flairpo.com/ is a service created by Fletcher Padgett (http://twitter.com/flatanimals)
+
+*****CHANGE LOG*****
+-V 0.5.1
+*Added support for 'flairpo.com'
 
 *****CHANGE LOG*****
 -V 0.5
@@ -45,19 +50,19 @@ License: MIT, see README.txt
   $.fn.placeholdit = function( options ) {
 
     var settings = {
-    	format			:	'.gif',		//->supports '.jpg', '.jpeg', '.png', '.gif'
+    	format			:	'.gif',			//->supports '.jpg', '.jpeg', '.png', '.gif'
     	text				:	'',			//->default text is the dimensions
-    	backgroundColor	:	'cccccc',	//->default color is 'cccccc'
+    	backgroundColor	:	'cccccc',		//->default color is 'cccccc'
     	textColor			:	'969696',	//->default color is '969696'
     	width				:	200,		//->required
-    	height		:	'',			//->not required. If left blank, image returned will be square widthxwidth
+    	height				:	'',			//->not required. If left blank, image returned will be square widthxwidth
     	overwriteSRC		:	true,		//->if the image already has src filled in, this decided whether or not to replace it
-    	overrideProperties:	true,		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
-    	type				:	'default',	//->'default' uses Placehold.it to generate images, 'kitten' uses placekitten.com and 'flickr' uses flickrholdr.com (if you pass '000' or '000000' as the background color, the images will be b&w)
-    	tag				:	'',			//->default tags for use with flickrholdr. Use this to narrow down content in returned image (e.g. 'dog,yard')
-    	offset			:	0,			//->dafault amount to offset through the images from flickr, so if you don't like the first image, set offset to 1 to get to the next image from flickr			
-    	callback			:	function(){}			// execute a calLback
-    }
+    	overrideProperties:	true,			//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
+    	type				:	'default',	//->'default' uses Placehold.it to generate images, 'kitten' uses placekitten.com and 'flair' uses flairpo.com (if you pass '000' or '000000' as the background color, the images will be b&w)
+    	tag					:	'',			//->default tags for use with lorempixel. Use this to narrow down content in returned image (e.g. 'work')			
+    	callback			:	function(){}// execute a calLback
+    },
+    	src;//used later in code
     
     //make sure at least one image is there
     if(this.is('img')){    	
@@ -69,16 +74,20 @@ License: MIT, see README.txt
        			var width = (settings.overrideProperties)? Number(settings.width):$(el).width() ||  settings.width;
     			var height = (settings.overrideProperties)? Number(settings.height) || width:$(el).height() || Number(settings.height) || width;
     			if(settings.type === 'kitten'){
-    				var src = 'http://placekitten.com/';
+    				src = 'http://placekitten.com/';
     				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
     				src += width + '/' + height;
     			}else if(settings.type === 'lorempixel'){
-    				var src = 'http://lorempixel.com/';
+    				src = 'http://lorempixel.com/';
     				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
     				src += width + '/' + height;
     				if(settings.tag.length) src += '/' + settings.tag;
+    			}else if(settings.type === 'flair'){
+    				src = 'http://flairpo.com/';
+    				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
+    				src += width + '/' + height;
     			}else{
-    				var src = 'http://placehold.it/';
+    				src = 'http://placehold.it/';
     				src += width + "x" + height;
     				src += "/" + settings.backgroundColor + "/" + settings.textColor;
     				src += settings.format;
