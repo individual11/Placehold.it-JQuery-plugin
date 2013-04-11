@@ -4,13 +4,20 @@ Author: David Vogeleer
 Site: http://www.individual11.com/placeholdit/
 Description: The easiest way to add FPO images to your mockups at runtime.
 
-Version: 0.4
+Version: 0.5
 
 License: MIT, see README.txt
 
 ** Placehold.it is a service/website created by Brent Spore (http://twitter.com/#!/iboughtamac) and Russell Heimlich (http://twitter.com/#!/kingkool68) **
 ** Placekitten.com is a service created by Mark James (http://mark.james.name/) **
-** Flickholdr.com is a service created by Jonathan Foucher (http://jfoucher.com/) **
+** Flickholdr.com is a service created by Jonathan Foucher (http://jfoucher.com/) *
+** Lorempixel.com is a service created by Holler-Moritz (http://lorempixel.com//) **
+
+*****CHANGE LOG*****
+-V 0.5
+*Added support for callback functions
+*Added support for 'Lorempixel.com'
+*Removed support for 'Flickholdr.com'
 
 *****CHANGE LOG*****
 -V 0.4
@@ -36,17 +43,18 @@ License: MIT, see README.txt
   $.fn.placeholdit = function( options ) {
 
     var settings = {
-    	'format'			:	'.gif',		//->supports '.jpg', '.jpeg', '.png', '.gif'
-    	'text'				:	'',			//->default text is the dimensions
-    	'backgroundColor'	:	'cccccc',	//->default color is 'cccccc'
-    	'textColor'			:	'969696',	//->default color is '969696'
-    	'width'				:	200,		//->required
-    	'height'			:	'',			//->not required. If left blank, image returned will be square widthxwidth
-    	'overwriteSRC'		:	false,		//->if the image already has src filled in, this decided whether or not to replace it
-    	'overrideProperties':	false,		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
-    	'type'				:	'default',	//->'default' uses Placehold.it to generate images, 'kitten' uses placekitten.com and 'flickr' uses flickrholdr.com (if you pass '000' or '000000' as the background color, the images will be b&w)
-    	'tags'				:	'',			//->default tags for use with flickrholdr. Use this to narrow down content in returned image (e.g. 'dog,yard')
-    	'offset'			:	0			//->dafault amount to offset through the images from flickr, so if you don't like the first image, set offset to 1 to get to the next image from flickr			
+    	format			:	'.gif',		//->supports '.jpg', '.jpeg', '.png', '.gif'
+    	text				:	'',			//->default text is the dimensions
+    	backgroundColor	:	'cccccc',	//->default color is 'cccccc'
+    	textColor			:	'969696',	//->default color is '969696'
+    	width				:	200,		//->required
+    	height		:	'',			//->not required. If left blank, image returned will be square widthxwidth
+    	overwriteSRC		:	true,		//->if the image already has src filled in, this decided whether or not to replace it
+    	overrideProperties:	true,		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
+    	type				:	'default',	//->'default' uses Placehold.it to generate images, 'kitten' uses placekitten.com and 'flickr' uses flickrholdr.com (if you pass '000' or '000000' as the background color, the images will be b&w)
+    	tag				:	'',			//->default tags for use with flickrholdr. Use this to narrow down content in returned image (e.g. 'dog,yard')
+    	offset			:	0,			//->dafault amount to offset through the images from flickr, so if you don't like the first image, set offset to 1 to get to the next image from flickr			
+    	callback			:	function(){}			// execute a calLback
     }
     
     //make sure at least one image is there
@@ -62,12 +70,11 @@ License: MIT, see README.txt
     				var src = 'http://placekitten.com/';
     				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
     				src += width + '/' + height;
-    			}else if(settings.type === 'flickr'){
-    				var src = 'http://flickholdr.com/';
+    			}else if(settings.type === 'lorempixel'){
+    				var src = 'http://lorempixel.com/';
+    				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += 'g/';
     				src += width + '/' + height;
-    				if(settings.tags.length) src += '/' + settings.tags;
-    				if(settings.backgroundColor === '000' || settings.backgroundColor === '000000') src += '/bw';
-    				if(settings.offset > 0) src += '/' + settings.offset;
+    				if(settings.tag.length) src += '/' + settings.tag;
     			}else{
     				var src = 'http://placehold.it/';
     				src += width + "x" + height;
@@ -76,7 +83,12 @@ License: MIT, see README.txt
     				src += "&text=" + settings.text;//the service ignores it if it's left blank, so this will speed up the loop slightly
     			}
     			$(el).attr('src', src);
-    		}
+				
+    			$(el).load(function(){
+		    		settings.callback.call(this);
+		    	})
+			
+    		};
     	});
     }else{
     	//if no images are found, it just moves forward
