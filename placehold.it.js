@@ -19,6 +19,7 @@ License: MIT, see README.txt
 *****CHANGE LOG*****
 -V 0.5.1
 *Added support for 'flairpo.com'
+*Cleaned up a few things, including bad default settings
 
 *****CHANGE LOG*****
 -V 0.5
@@ -56,10 +57,10 @@ License: MIT, see README.txt
     	textColor			:	'969696',	//->default color is '969696'
     	width				:	200,		//->required
     	height				:	'',			//->not required. If left blank, image returned will be square widthxwidth
-    	overwriteSRC		:	true,		//->if the image already has src filled in, this decided whether or not to replace it
-    	overrideProperties	:	true,		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
+    	overwriteSRC		:	false,		//->if the image already has src filled in, this decided whether or not to replace it
+    	overrideProperties	:	false,		//->by default, if the img element has width/height set, we use that, but if this is set to true, we ignore it and use the settings
     	type				:	'default',	//->'default' uses Placehold.it to generate images, 'kitten' uses placekitten.com and 'flair' uses flairpo.com (if you pass '000' or '000000' as the background color, the images will be b&w)
-    	tag					:	'',			//->default tags for use with lorempixel. Use this to narrow down content in returned image (e.g. 'work')			
+    	tag					:	'',			//->default tag for use with lorempixel. Use this to narrow down content in returned image (e.g. 'work')			
     	callback			:	function(){}// execute a calLback
     },
     	src;//used later in code

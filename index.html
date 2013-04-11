@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<!-- jQuery --> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
 	<script src="placehold.it.js"></script>
 	<script type="text/javascript">
 	
@@ -58,31 +58,42 @@
 			backgroundColor:'000'
 		});
 		
-		//USE FLICKR
+		//USE LOREMPIXEL
 		//in color
-		$('#colorFlickr').placeholdit({
-			type:'flickr'
+		$('#colorLP').placeholdit({
+			type:'lorempixel'
 		});
 		//or black & white
-		$('#blackAndWhiteFlickr').placeholdit({
+		$('#blackAndWhiteLP').placeholdit({
 			width: 450,
 			height: 200,
-			type:'flickr',
+			type:'lorempixel',
 			backgroundColor:'000'
 		});
 		
 		//OR NARROW DOWN THE CONTENT
-		$('#colorDogYard').placeholdit({
-			type:'flickr',
-			tags:'dog,yard'
+		$('#colorSports').placeholdit({
+			type:'lorempixel',
+			tag:'sports'
 		});
 		//or black & white
-		$('#blackAndWhiteDogGrass').placeholdit({
+		$('#blackAndWhiteSports').placeholdit({
 			width: 450,
 			height: 200,
-			type:'flickr',
+			type:'lorempixel',
 			backgroundColor:'000',
-			tags:'dog,grass'
+			tag:'sports'
+		});
+		
+		//USE FLAIRPO
+		$('#flairColor').placeholdit({
+			type:'flair'
+		});
+		$('#flairBW').placeholdit({
+			width: 450,
+			height: 200,
+			type:'flair',
+			backgroundColor:'000'
 		});
 	
 	});
@@ -147,11 +158,13 @@
 	<span id="version">v 0.5.1</span>
 </div>
 	<p>I&apos;ve been a big fan of <a href="http://www.placehold.it" target="_blank">Placehold.it</a> since I first ran across it. It&apos;s a service that makes it super easy to dynamically generate placeholder images for wire framing or during development. I decided to wrap the service into a JQuery plugin that will make it easy to generate FPO images at runtime.</p>
+	
 	<p>You can have an element as simple as <strong>&lt;img /&gt;</strong> and call <strong>$(&apos;img&apos;).placeholdit();</strong> to generate an image for it. You can also set the dimension of the image being returned in the attributes of the image like <strong>&lt;img width=&quot;200&quot; height=&quot;300&quot; /&gt;</strong>. And if <strong>width</strong> or <strong>height</strong> is set in CSS, it will respect that as well.</p>
+	
 	<p>Also, by default if the image has a <em>src</em> attribute already set, then it&apos;s skipped. You can override this by changing <strong>overwriteSRC</strong> to <strong>true</strong> and it won&apos;t matter if the <em>src</em> attribute is set or not.</p>
+	
 	<p>Below are a few examples of it working, so view the source to see the actual code for it.</p>
-	<p><strong>*Update</strong>: v 0.3 has a few simple code tweeks and one pretty cool new feature - <a href="#kittens">KITTENS!</a> A <a href="http://placekitten.com/" target="_blank">new service</a> popped up that was inspired by Placehold.it, but uses actual pictures of kittens for FPO imagery, so I decided to incorporate it.</p>
-	<p><strong>*Update</strong>: v 0.4 adds the new service for getting - <a href="#flickr">flickr</a> photos, <a href="http://flickholdr.com/" target="_blank">flickholdr</a>. You simply set the <em>type</em> to <strong>flickr</strong> and you will receive random images at the sizes you request. You can also pass an option parameter <em>tags</em>, which is a coma-separated string (e.g. <a href="#dogGrass">&quot;dog,grass&quot;</a>) that will narrow down the content of the image being returned.</p>
+	
 	<p>You can always grab the <strong><a href="https://github.com/individual11/Placehold.it-JQuery-plugin">source from GitHub</a></strong>.</p>
 </div>
 
@@ -201,19 +214,28 @@
 	<img id="colorKitten" />
 	<img id="grayScaleKitten" />
 </div>
-<div id="flickr">
+<div id="lorempixel">
 	<div class="header">
-		<h2>FLICKR SUPPORT</h2>
+		<h2>LOREMPIXEL SUPPORT</h2>
 	</div>
-	<img id="colorFlickr" />
-	<img id="blackAndWhiteFlickr" />
+	<img id="colorLP" />
+	<img id="blackAndWhiteLP" />
 </div>
-<div id="dogGrass">
+<div>
 	<div class="header">
 		<h2>USE TAGS TO NARROW DOWN IMAGE CONTENT</h2>
 	</div>
-	<img id="colorDogYard" />
-	<img id="blackAndWhiteDogGrass" />
+	<img id="colorSports" />
+	<img id="blackAndWhiteSports" />
 </div>
+<div id="flair">
+	<div class="header">
+		<h2>ADD SOME FLAIR!!</h2>
+	</div>
+	<img id="flairColor" />
+	<img id="flairBW" />
+</div>
+
+
 </body>
 </html>
