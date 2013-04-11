@@ -4,13 +4,15 @@ Author: David Vogeleer
 Site: http://www.individual11.com/placeholdit/
 Description: The easiest way to add FPO images to your mockups at runtime.
 
+Contributors:
+Sidney Bofah
+
 Version: 0.5
 
 License: MIT, see README.txt
 
 ** Placehold.it is a service/website created by Brent Spore (http://twitter.com/#!/iboughtamac) and Russell Heimlich (http://twitter.com/#!/kingkool68) **
 ** Placekitten.com is a service created by Mark James (http://mark.james.name/) **
-** Flickholdr.com is a service created by Jonathan Foucher (http://jfoucher.com/) *
 ** Lorempixel.com is a service created by Holler-Moritz (http://lorempixel.com//) **
 
 *****CHANGE LOG*****
