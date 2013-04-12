@@ -51,9 +51,9 @@ License: MIT, see README.txt
   $.fn.placeholdit = function( options ) {
 
     var settings = {
-    	format			:	'.gif',			//->supports '.jpg', '.jpeg', '.png', '.gif'
+    	format				:	'.gif',			//->supports '.jpg', '.jpeg', '.png', '.gif'
     	text				:	'',			//->default text is the dimensions
-    	backgroundColor	:	'cccccc',		//->default color is 'cccccc'
+    	backgroundColor		:	'cccccc',		//->default color is 'cccccc'
     	textColor			:	'969696',	//->default color is '969696'
     	width				:	200,		//->required
     	height				:	'',			//->not required. If left blank, image returned will be square widthxwidth
