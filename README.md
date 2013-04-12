@@ -16,7 +16,7 @@ You can customise a lot of different things with the placeholdit plugin with the
 	* [lorempixel](http://lorempixel.com/)
 	* [flair](http://flairpo.com/)
 * format (str) - what filetype of image you want returned.
-	* __.gif__ (_default_)
+	* __.gif__ ( _default_ )
 	* __.jpg__, __.jpeg__
 	* __.png__
 * text (str) - the text to appear over the image.
@@ -38,6 +38,8 @@ $('img').error(function(){
 });
 ```
 
+### More Info
+To see it in action, [click here](http://individual11.com/placeholdit/).
 
 ###License
 
