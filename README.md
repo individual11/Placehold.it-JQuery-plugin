@@ -33,6 +33,13 @@ You can customise a lot of different things with the placeholdit plugin with the
 A simple use for the placeholdit plugin is replacing all broken images so you can spot them easily during devolopment. Simply use this code.
 
 ```javascript
+var errorReplacement = {
+			overwriteSRC: true,
+			backgroundColor: 'ff0000',
+			textColor: 'ffffff',
+			text: '! no img found !'
+		}
+		
 $('img').error(function(){
 	$(this).placeholdit(errorReplacement);
 });
