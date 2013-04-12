@@ -32,13 +32,11 @@ You can customise a lot of different things with the placeholdit plugin with the
 ## Use case
 A simple use for the placeholdit plugin is replacing all broken images so you can spot them easily during devolopment. Simply use this code.
 
-'''javascript
-
-	$('img').error(function(){
-		$(this).placeholdit(errorReplacement);
-	});
-	
-'''
+```javascript
+$('img').error(function(){
+	$(this).placeholdit(errorReplacement);
+});
+```
 
 
 ###License
