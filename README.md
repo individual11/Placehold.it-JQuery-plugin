@@ -46,7 +46,7 @@ $('img').error(function(){
 ```
 
 ### More Info
-To see it in action, [click here](http://individual11.com/placeholdit/).
+To see it in action, [click here](http://individual11.github.io/Placehold.it-JQuery-plugin/).
 
 ###License
 
